@@ -16,7 +16,7 @@ export async function prepareFile(
   filePath: string;
   cleanup: () => Promise<void>;
 }> {
-  const tempDir = await fsMakeTempDir(path.join(tmpdir(), 'opencommit-test-'));
+  const tempDir = await fsMakeTempDir(path.join(tmpdir(), 'git-commit-test-'));
   const filePath = path.resolve(tempDir, fileName);
   await fsWriteFile(filePath, content);
   const cleanup = async () => {

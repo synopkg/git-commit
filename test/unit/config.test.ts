@@ -49,8 +49,8 @@ describe('config', () => {
   };
 
   describe('getConfig', () => {
-    it('should prioritize local .env over global .opencommit config', async () => {
-      globalConfigFile = await generateConfig('.opencommit', {
+    it('should prioritize local .env over global .git-commit config', async () => {
+      globalConfigFile = await generateConfig('.git-commit', {
         OCO_API_KEY: 'global-key',
         OCO_MODEL: 'gpt-3.5-turbo',
         OCO_LANGUAGE: 'en'
@@ -73,7 +73,7 @@ describe('config', () => {
     });
 
     it('should fallback to global config when local config is not set', async () => {
-      globalConfigFile = await generateConfig('.opencommit', {
+      globalConfigFile = await generateConfig('.git-commit', {
         OCO_API_KEY: 'global-key',
         OCO_MODEL: 'gpt-4',
         OCO_LANGUAGE: 'de',
@@ -98,7 +98,7 @@ describe('config', () => {
     });
 
     it('should handle boolean and numeric values correctly', async () => {
-      globalConfigFile = await generateConfig('.opencommit', {
+      globalConfigFile = await generateConfig('.git-commit', {
         OCO_TOKENS_MAX_INPUT: '4096',
         OCO_TOKENS_MAX_OUTPUT: '500',
         OCO_GITPUSH: 'true'
@@ -122,7 +122,7 @@ describe('config', () => {
     });
 
     it('should handle empty local config correctly', async () => {
-      globalConfigFile = await generateConfig('.opencommit', {
+      globalConfigFile = await generateConfig('.git-commit', {
         OCO_API_KEY: 'global-key',
         OCO_MODEL: 'gpt-4',
         OCO_LANGUAGE: 'es'
@@ -142,7 +142,7 @@ describe('config', () => {
     });
 
     it('should override global config with null values in local .env', async () => {
-      globalConfigFile = await generateConfig('.opencommit', {
+      globalConfigFile = await generateConfig('.git-commit', {
         OCO_API_KEY: 'global-key',
         OCO_MODEL: 'gpt-4',
         OCO_LANGUAGE: 'es'
@@ -162,7 +162,7 @@ describe('config', () => {
     });
 
     it('should handle empty global config', async () => {
-      globalConfigFile = await generateConfig('.opencommit', {});
+      globalConfigFile = await generateConfig('.git-commit', {});
       envConfigFile = await generateConfig('.env', {});
 
       const config = getConfig({
@@ -178,11 +178,11 @@ describe('config', () => {
   describe('setConfig', () => {
     beforeEach(async () => {
       // we create and delete the file to have the parent directory, but not the file, to test the creation of the file
-      globalConfigFile = await generateConfig('.opencommit', {});
+      globalConfigFile = await generateConfig('.git-commit', {});
       rmSync(globalConfigFile.filePath);
     });
 
-    it('should create .opencommit file with DEFAULT CONFIG if it does not exist on first setConfig run', async () => {
+    it('should create .git-commit file with DEFAULT CONFIG if it does not exist on first setConfig run', async () => {
       const isGlobalConfigFileExist = existsSync(globalConfigFile.filePath);
       expect(isGlobalConfigFileExist).toBe(false);
 
@@ -199,7 +199,7 @@ describe('config', () => {
     });
 
     it('should set new config values', async () => {
-      globalConfigFile = await generateConfig('.opencommit', {});
+      globalConfigFile = await generateConfig('.git-commit', {});
       await setConfig(
         [
           [CONFIG_KEYS.OCO_API_KEY, 'new-key'],
@@ -216,7 +216,7 @@ describe('config', () => {
     });
 
     it('should update existing config values', async () => {
-      globalConfigFile = await generateConfig('.opencommit', {
+      globalConfigFile = await generateConfig('.git-commit', {
         OCO_API_KEY: 'initial-key'
       });
       await setConfig(
@@ -231,7 +231,7 @@ describe('config', () => {
     });
 
     it('should handle boolean and numeric values correctly', async () => {
-      globalConfigFile = await generateConfig('.opencommit', {});
+      globalConfigFile = await generateConfig('.git-commit', {});
       await setConfig(
         [
           [CONFIG_KEYS.OCO_TOKENS_MAX_INPUT, '8192'],
@@ -250,7 +250,7 @@ describe('config', () => {
     });
 
     it('should throw an error for unsupported config keys', async () => {
-      globalConfigFile = await generateConfig('.opencommit', {});
+      globalConfigFile = await generateConfig('.git-commit', {});
 
       try {
         await setConfig(

@@ -27330,7 +27330,7 @@ function G3(t2, e3) {
 
 // package.json
 var package_default = {
-  name: "opencommit",
+  name: "git-commit",
   version: "3.2.2",
   description: "Auto-generate impressive commits in 1 second. Killing lame commits with AI \u{1F92F}\u{1F52B}",
   keywords: [
@@ -27339,7 +27339,7 @@ var package_default = {
     "gpt",
     "ai",
     "openai",
-    "opencommit",
+    "git-commit",
     "aicommit",
     "aicommits",
     "gptcommit",
@@ -27348,14 +27348,14 @@ var package_default = {
   ],
   main: "cli.js",
   bin: {
-    opencommit: "./out/cli.cjs",
+    "git-commit": "./out/cli.cjs",
     oco: "./out/cli.cjs"
   },
   repository: {
-    url: "https://github.com/di-sukharev/opencommit"
+    url: "https://github.com/synopkg/git-commit"
   },
   type: "module",
-  author: "https://github.com/di-sukharev",
+  author: "https://github.com/synopkg",
   license: "MIT",
   files: [
     "out/cli.cjs",
@@ -29946,9 +29946,7 @@ var getDefaultModel = (provider) => {
 var validateConfig = (key, condition, validationMessage) => {
   if (!condition) {
     ce(`${source_default.red("\u2716")} wrong value for ${key}: ${validationMessage}.`);
-    ce(
-      "For more help refer to docs https://github.com/di-sukharev/opencommit"
-    );
+    ce("For more help refer to docs https://github.com/synopkg/git-commit");
     process.exit(1);
   }
 };
@@ -30113,7 +30111,7 @@ var OCO_AI_PROVIDER_ENUM = /* @__PURE__ */ ((OCO_AI_PROVIDER_ENUM2) => {
   OCO_AI_PROVIDER_ENUM2["GROQ"] = "groq";
   return OCO_AI_PROVIDER_ENUM2;
 })(OCO_AI_PROVIDER_ENUM || {});
-var defaultConfigPath = (0, import_path.join)((0, import_os.homedir)(), ".opencommit");
+var defaultConfigPath = (0, import_path.join)((0, import_os.homedir)(), ".git-commit");
 var defaultEnvPath = (0, import_path.resolve)(process.cwd(), ".env");
 var DEFAULT_CONFIG = {
   OCO_TOKENS_MAX_INPUT: 40960 /* DEFAULT_MAX_TOKENS_INPUT */,
@@ -30228,7 +30226,7 @@ var setConfig = (keyValues, globalConfigPath = defaultConfigPath) => {
 
 ${supportedKeys}.
 
-For more help refer to our docs: https://github.com/di-sukharev/opencommit`
+For more help refer to our docs: https://github.com/synopkg/git-commit`
       );
     }
     let parsedConfigValue;
@@ -35624,7 +35622,7 @@ var AnthropicEngine = class {
           if (anthropicAiError?.message)
             ce(anthropicAiError.message);
           ce(
-            "For help look into README https://github.com/di-sukharev/opencommit#setup"
+            "For help look into README https://github.com/synopkg/git-commit#setup"
           );
         }
         throw err;
@@ -39317,7 +39315,7 @@ var AzureEngine = class {
           if (openAiError?.message)
             ce(openAiError.message);
           ce(
-            "For help look into README https://github.com/di-sukharev/opencommit#setup"
+            "For help look into README https://github.com/synopkg/git-commit#setup"
           );
         }
         throw err;
@@ -44511,7 +44509,10 @@ var OpenAiEngine = class {
     if (!config7.baseURL) {
       this.client = new OpenAI({ apiKey: config7.apiKey });
     } else {
-      this.client = new OpenAI({ apiKey: config7.apiKey, baseURL: config7.baseURL });
+      this.client = new OpenAI({
+        apiKey: config7.apiKey,
+        baseURL: config7.baseURL
+      });
     }
   }
 };
@@ -44556,7 +44557,7 @@ function getEngine() {
 }
 
 // src/modules/commitlint/constants.ts
-var COMMITLINT_LLM_CONFIG_PATH = `${process.env.PWD}/.opencommit-commitlint`;
+var COMMITLINT_LLM_CONFIG_PATH = `${process.env.PWD}/.git-commit-commitlint`;
 
 // src/modules/commitlint/crypto.ts
 var import_crypto2 = __toESM(require("crypto"), 1);
@@ -45180,10 +45181,10 @@ var assertGitRepo = async () => {
     throw new Error(error);
   }
 };
-var getOpenCommitIgnore = () => {
+var getGitCommitIgnore = () => {
   const ig = (0, import_ignore.default)();
   try {
-    ig.add((0, import_fs3.readFileSync)(".opencommitignore").toString().split("\n"));
+    ig.add((0, import_fs3.readFileSync)(".git-commitignore").toString().split("\n"));
   } catch (e3) {
   }
   return ig;
@@ -45207,7 +45208,7 @@ var getStagedFiles = async () => {
   if (!files)
     return [];
   const filesList = files.split("\n");
-  const ig = getOpenCommitIgnore();
+  const ig = getGitCommitIgnore();
   const allowedFiles = filesList.filter((file) => !ig.ignores(file));
   if (!allowedFiles)
     return [];
@@ -45477,7 +45478,7 @@ var commitlintConfigCommand = G3(
     parameters: ["<mode>"]
   },
   async (argv) => {
-    ae("opencommit \u2014 configure @commitlint");
+    ae("git-commit \u2014 configure @commitlint");
     try {
       const { mode } = argv._;
       if (mode === "get" /* get */) {
@@ -45533,7 +45534,7 @@ var hookCommand = G3(
       await assertGitRepo();
       const { setUnset: mode } = argv._;
       if (mode === "set") {
-        ae(`setting opencommit as '${HOOK_NAME}' hook at ${SYMLINK_URL}`);
+        ae(`setting git-commit as '${HOOK_NAME}' hook at ${SYMLINK_URL}`);
         if (await isHookExists()) {
           let realPath;
           try {
@@ -45543,9 +45544,9 @@ var hookCommand = G3(
             realPath = null;
           }
           if (realPath === HOOK_URL)
-            return ce(`OpenCommit is already set as '${HOOK_NAME}'`);
+            return ce(`Git-Commit is already set as '${HOOK_NAME}'`);
           throw new Error(
-            `Different ${HOOK_NAME} is already set. Remove it before setting opencommit as '${HOOK_NAME}' hook.`
+            `Different ${HOOK_NAME} is already set. Remove it before setting git-commit as '${HOOK_NAME}' hook.`
           );
         }
         await import_promises3.default.mkdir(import_path4.default.dirname(SYMLINK_URL), { recursive: true });
@@ -45555,17 +45556,17 @@ var hookCommand = G3(
       }
       if (mode === "unset") {
         ae(
-          `unsetting opencommit as '${HOOK_NAME}' hook from ${SYMLINK_URL}`
+          `unsetting git-commit as '${HOOK_NAME}' hook from ${SYMLINK_URL}`
         );
         if (!await isHookExists()) {
           return ce(
-            `OpenCommit wasn't previously set as '${HOOK_NAME}' hook, nothing to remove`
+            `Git-Commit wasn't previously set as '${HOOK_NAME}' hook, nothing to remove`
           );
         }
         const realpath = await import_promises3.default.realpath(SYMLINK_URL);
         if (realpath !== HOOK_URL) {
           return ce(
-            `OpenCommit wasn't previously set as '${HOOK_NAME}' hook, but different hook was, if you want to remove it \u2014 do it manually`
+            `Git-Commit wasn't previously set as '${HOOK_NAME}' hook, but different hook was, if you want to remove it \u2014 do it manually`
           );
         }
         await import_promises3.default.rm(SYMLINK_URL);
@@ -45605,11 +45606,11 @@ var prepareCommitMessageHook = async (isStageAllFlag = false) => {
     const staged = await getStagedFiles();
     if (!staged)
       return;
-    ae("opencommit");
+    ae("git-commit");
     const config7 = getConfig();
     if (!config7.OCO_API_KEY) {
       ce(
-        "No OCO_API_KEY is set. Set your key via `oco config set OCO_API_KEY=<value>. For more info see https://github.com/di-sukharev/opencommit"
+        "No OCO_API_KEY is set. Set your key via `oco config set OCO_API_KEY=<value>. For more info see https://github.com/synopkg/git-commit"
       );
       return;
     }
@@ -45631,28 +45632,28 @@ var prepareCommitMessageHook = async (isStageAllFlag = false) => {
 };
 
 // src/version.ts
-var getOpenCommitLatestVersion = async () => {
+var getGitCommitLatestVersion = async () => {
   try {
-    const { stdout } = await execa("npm", ["view", "opencommit", "version"]);
+    const { stdout } = await execa("npm", ["view", "git-commit", "version"]);
     return stdout;
   } catch (_7) {
-    ce("Error while getting the latest version of opencommit");
+    ce("Error while getting the latest version of git-commit");
     return void 0;
   }
 };
 
 // src/utils/checkIsLatestVersion.ts
 var checkIsLatestVersion = async () => {
-  const latestVersion = await getOpenCommitLatestVersion();
+  const latestVersion = await getGitCommitLatestVersion();
   if (latestVersion) {
     const currentVersion = package_default.version;
     if (currentVersion !== latestVersion) {
       ce(
         source_default.yellow(
           `
-You are not using the latest stable version of OpenCommit with new features and bug fixes.
+You are not using the latest stable version of Git-Commit with new features and bug fixes.
 Current version: ${currentVersion}. Latest version: ${latestVersion}.
-\u{1F680} To update run: npm i -g opencommit@latest.
+\u{1F680} To update run: npm i -g git-commit@latest.
         `
         )
       );
@@ -45758,7 +45759,7 @@ var migrations = [
 ];
 
 // src/migrations/_run.ts
-var migrationsFile = (0, import_path5.join)((0, import_os2.homedir)(), ".opencommit_migrations");
+var migrationsFile = (0, import_path5.join)((0, import_os2.homedir)(), ".git-commit_migrations");
 var getCompletedMigrations = () => {
   if (!import_fs5.default.existsSync(migrationsFile)) {
     return [];
@@ -45813,7 +45814,7 @@ var extraArgs = process.argv.slice(2);
 Z2(
   {
     version: package_default.version,
-    name: "opencommit",
+    name: "git-commit",
     commands: [configCommand, hookCommand, commitlintConfigCommand],
     flags: {
       fgm: Boolean,

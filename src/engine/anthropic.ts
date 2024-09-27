@@ -68,7 +68,7 @@ export class AnthropicEngine implements AiEngine {
 
         if (anthropicAiError?.message) outro(anthropicAiError.message);
         outro(
-          'For help look into README https://github.com/di-sukharev/opencommit#setup'
+          'For help look into README https://github.com/synopkg/git-commit#setup'
         );
       }
 

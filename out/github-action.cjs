@@ -48758,9 +48758,7 @@ var getDefaultModel = (provider) => {
 var validateConfig = (key, condition, validationMessage) => {
   if (!condition) {
     ce(`${source_default.red("\u2716")} wrong value for ${key}: ${validationMessage}.`);
-    ce(
-      "For more help refer to docs https://github.com/di-sukharev/opencommit"
-    );
+    ce("For more help refer to docs https://github.com/synopkg/git-commit");
     process.exit(1);
   }
 };
@@ -48914,7 +48912,7 @@ var configValidators = {
     return value;
   }
 };
-var defaultConfigPath = (0, import_path.join)((0, import_os.homedir)(), ".opencommit");
+var defaultConfigPath = (0, import_path.join)((0, import_os.homedir)(), ".git-commit");
 var defaultEnvPath = (0, import_path.resolve)(process.cwd(), ".env");
 var DEFAULT_CONFIG = {
   OCO_TOKENS_MAX_INPUT: 40960 /* DEFAULT_MAX_TOKENS_INPUT */,
@@ -49029,7 +49027,7 @@ var setConfig = (keyValues, globalConfigPath = defaultConfigPath) => {
 
 ${supportedKeys}.
 
-For more help refer to our docs: https://github.com/di-sukharev/opencommit`
+For more help refer to our docs: https://github.com/synopkg/git-commit`
       );
     }
     let parsedConfigValue;
@@ -54425,7 +54423,7 @@ var AnthropicEngine = class {
           if (anthropicAiError?.message)
             ce(anthropicAiError.message);
           ce(
-            "For help look into README https://github.com/di-sukharev/opencommit#setup"
+            "For help look into README https://github.com/synopkg/git-commit#setup"
           );
         }
         throw err;
@@ -58118,7 +58116,7 @@ var AzureEngine = class {
           if (openAiError?.message)
             ce(openAiError.message);
           ce(
-            "For help look into README https://github.com/di-sukharev/opencommit#setup"
+            "For help look into README https://github.com/synopkg/git-commit#setup"
           );
         }
         throw err;
@@ -63312,7 +63310,10 @@ var OpenAiEngine = class {
     if (!config6.baseURL) {
       this.client = new OpenAI({ apiKey: config6.apiKey });
     } else {
-      this.client = new OpenAI({ apiKey: config6.apiKey, baseURL: config6.baseURL });
+      this.client = new OpenAI({
+        apiKey: config6.apiKey,
+        baseURL: config6.baseURL
+      });
     }
   }
 };
@@ -63357,7 +63358,7 @@ function getEngine() {
 }
 
 // src/modules/commitlint/constants.ts
-var COMMITLINT_LLM_CONFIG_PATH = `${process.env.PWD}/.opencommit-commitlint`;
+var COMMITLINT_LLM_CONFIG_PATH = `${process.env.PWD}/.git-commit-commitlint`;
 
 // src/modules/commitlint/crypto.ts
 var import_crypto2 = __toESM(require("crypto"), 1);
@@ -64100,7 +64101,7 @@ async function improveCommitMessages(commitsToImprove) {
   ce("Done \u{1F9D9}");
 }
 async function run() {
-  ae("OpenCommit \u2014 improving lame commit messages");
+  ae("Git-Commit \u2014 improving lame commit messages");
   try {
     if (import_github.default.context.eventName === "push") {
       ce(`Processing commits in a Push event`);
@@ -64115,7 +64116,7 @@ async function run() {
     } else {
       ce("Wrong action.");
       import_core22.default.error(
-        `OpenCommit was called on ${import_github.default.context.payload.action}. OpenCommit is supposed to be used on "push" action.`
+        `Git-Commit was called on ${import_github.default.context.payload.action}. Git-Commit is supposed to be used on "push" action.`
       );
     }
   } catch (error) {

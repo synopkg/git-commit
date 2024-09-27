@@ -1,5 +1,5 @@
 {
-  "name": "opencommit",
+  "name": "git-commit",
   "version": "3.2.2",
   "description": "Auto-generate impressive commits in 1 second. Killing lame commits with AI 🤯🔫",
   "keywords": [
@@ -8,7 +8,7 @@
     "gpt",
     "ai",
     "openai",
-    "opencommit",
+    "git-commit",
     "aicommit",
     "aicommits",
     "gptcommit",
@@ -17,14 +17,14 @@
   ],
   "main": "cli.js",
   "bin": {
-    "opencommit": "./out/cli.cjs",
+    "git-commit": "./out/cli.cjs",
     "oco": "./out/cli.cjs"
   },
   "repository": {
-    "url": "https://github.com/di-sukharev/opencommit"
+    "url": "https://github.com/synopkg/git-commit"
   },
   "type": "module",
-  "author": "https://github.com/di-sukharev",
+  "author": "https://github.com/synopkg",
   "license": "MIT",
   "files": [
     "out/cli.cjs",

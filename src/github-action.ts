@@ -191,7 +191,7 @@ async function improveCommitMessages(
 }
 
 async function run() {
-  intro('OpenCommit — improving lame commit messages');
+  intro('Git-Commit — improving lame commit messages');
 
   try {
     if (github.context.eventName === 'push') {
@@ -214,7 +214,7 @@ async function run() {
     } else {
       outro('Wrong action.');
       core.error(
-        `OpenCommit was called on ${github.context.payload.action}. OpenCommit is supposed to be used on "push" action.`
+        `Git-Commit was called on ${github.context.payload.action}. Git-Commit is supposed to be used on "push" action.`
       );
     }
   } catch (error: any) {
