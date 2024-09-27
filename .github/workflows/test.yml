@@ -15,7 +15,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
-      run: npm install
+      run: x
     - name: Run Unit Tests
       run: npm run test:unit
   e2e-test:
@@ -36,8 +36,8 @@ jobs:
         git --version
     - name: Setup git
       run: |
-        git config --global user.email "test@example.com"
-        git config --global user.name "Test User"
+        git config --global user.email "info@khulnasoft.com"
+        git config --global user.name "khulnasoft-bot"
     - name: Install dependencies
       run: npm install
     - name: Build

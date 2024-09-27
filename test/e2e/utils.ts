@@ -31,7 +31,7 @@ export const prepareEnvironment = async (): Promise<{
 }
 
 export const prepareTempDir = async(): Promise<string> => {
-  return await fsMakeTempDir(path.join(tmpdir(), 'opencommit-test-'));
+  return await fsMakeTempDir(path.join(tmpdir(), 'git-commit-test-'));
 }
 
 export const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));

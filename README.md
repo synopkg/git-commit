@@ -1,46 +1,46 @@
 <div align="center">
   <div>
-    <img src=".github/logo-grad.svg" alt="OpenCommit logo"/>
-    <h1 align="center">OpenCommit</h1>
+    <img src=".github/logo-grad.svg" alt="Git-Commit logo"/>
+    <h1 align="center">Git-Commit</h1>
     <h4 align="center">Author <a href="https://twitter.com/_sukharev_"><img src="https://img.shields.io/twitter/follow/_sukharev_?style=flat&label=_sukharev_&logo=twitter&color=0bf&logoColor=fff" align="center"></a>
   </div>
 	<h2>Auto-generate meaningful commits in a second</h2>
 	<p>Killing lame commits with AI 🤯🔫</p>
-	<a href="https://www.npmjs.com/package/opencommit"><img src="https://img.shields.io/npm/v/opencommit" alt="Current version"></a>
+	<a href="https://www.npmjs.com/package/git-commit"><img src="https://img.shields.io/npm/v/git-commit" alt="Current version"></a>
   <h4 align="center">🪩 Winner of <a href="https://twitter.com/_sukharev_/status/1683448136973582336">GitHub 2023 hackathon</a> 🪩</h4>
 </div>
 
 ---
 
 <div align="center">
-    <img src=".github/opencommit-example.png" alt="OpenCommit example"/>
+    <img src=".github/git-commit-example.png" alt="Git-Commit example"/>
 </div>
 
-All the commits in this repo are authored by OpenCommit — look at [the commits](https://github.com/di-sukharev/opencommit/commit/eae7618d575ee8d2e9fff5de56da79d40c4bc5fc) to see how OpenCommit works. Emojis and long commit descriptions are configurable, basically everything is.
+All the commits in this repo are authored by Git-Commit — look at [the commits](https://github.com/synopkg/git-commit/commit/eae7618d575ee8d2e9fff5de56da79d40c4bc5fc) to see how Git-Commit works. Emojis and long commit descriptions are configurable, basically everything is.
 
-## Setup OpenCommit as a CLI tool
+## Setup Git-Commit as a CLI tool
 
-You can use OpenCommit by simply running it via the CLI like this `oco`. 2 seconds and your staged changes are committed with a meaningful message.
+You can use Git-Commit by simply running it via the CLI like this `oco`. 2 seconds and your staged changes are committed with a meaningful message.
 
-1. Install OpenCommit globally to use in any repository:
+1. Install Git-Commit globally to use in any repository:
 
    ```sh
-   npm install -g opencommit
+   npm install -g git-commit
    ```
 
 2. Get your API key from [OpenAI](https://platform.openai.com/account/api-keys) or other supported LLM providers (we support them all). Make sure that you add your OpenAI payment details to your account, so the API works.
 
-3. Set the key to OpenCommit config:
+3. Set the key to Git-Commit config:
 
    ```sh
    oco config set OCO_API_KEY=<your_api_key>
    ```
 
-   Your API key is stored locally in the `~/.opencommit` config file.
+   Your API key is stored locally in the `~/.git-commit` config file.
 
 ## Usage
 
-You can call OpenCommit with `oco` command to generate a commit message for your staged changes:
+You can call Git-Commit with `oco` command to generate a commit message for your staged changes:
 
 ```sh
 git add <files...>
@@ -102,7 +102,7 @@ oco --yes
 
 ### Local per repo configuration
 
-Create a `.env` file and add OpenCommit config variables there like this:
+Create a `.env` file and add Git-Commit config variables there like this:
 
 ```env
 ...
@@ -120,7 +120,7 @@ OCO_PROMPT_MODULE=<either conventional-commit or @commitlint, default: conventio
 OCO_ONE_LINE_COMMIT=<one line commit message, default: false>
 ```
 
-Global configs are same as local configs, but they are stored in the global `~/.opencommit` config file and set with `oco config set` command, e.g. `oco config set OCO_MODEL=gpt-4o`.
+Global configs are same as local configs, but they are stored in the global `~/.git-commit` config file and set with `oco config set` command, e.g. `oco config set OCO_MODEL=gpt-4o`.
 
 ### Global config for all repos
 
@@ -148,9 +148,9 @@ Other config options are behaving the same.
 
 ### Output WHY the changes were done (WIP)
 
-You can set the `OCO_WHY` config to `true` to have OpenCommit output a short description of WHY the changes were done after the commit message. Default is `false`.
+You can set the `OCO_WHY` config to `true` to have Git-Commit output a short description of WHY the changes were done after the commit message. Default is `false`.
 
-To make this perform accurate we must store 'what files do' in some kind of an index or embedding and perform a lookup (kinda RAG) for the accurate git commit message. If you feel like building this comment on this ticket https://github.com/di-sukharev/opencommit/issues/398 and let's go from there together.
+To make this perform accurate we must store 'what files do' in some kind of an index or embedding and perform a lookup (kinda RAG) for the accurate git commit message. If you feel like building this comment on this ticket https://github.com/synopkg/git-commit/issues/398 and let's go from there together.
 
 ```sh
 oco config set OCO_WHY=true
@@ -158,7 +158,7 @@ oco config set OCO_WHY=true
 
 ### Switch to GPT-4 or other models
 
-By default, OpenCommit uses `gpt-4o-mini` model.
+By default, Git-Commit uses `gpt-4o-mini` model.
 
 You may switch to gpt-4o which performs better, but costs more 🤠
 
@@ -174,7 +174,7 @@ oco config set OCO_MODEL=gpt-3.5-turbo
 
 ### Switch to other LLM providers with a custom URL
 
-By default OpenCommit uses [OpenAI](https://openai.com).
+By default Git-Commit uses [OpenAI](https://openai.com).
 
 You could switch to [Azure OpenAI Service](https://learn.microsoft.com/azure/cognitive-services/openai/) or Flowise or Ollama.
 
@@ -203,7 +203,7 @@ oco config set OCO_LANGUAGE=française
 ```
 
 The default language setting is **English**
-All available languages are currently listed in the [i18n](https://github.com/di-sukharev/opencommit/tree/master/src/i18n) folder
+All available languages are currently listed in the [i18n](https://github.com/synopkg/git-commit/tree/master/src/i18n) folder
 
 ### Push to git (gonna be deprecated)
 
@@ -217,7 +217,7 @@ and it will exit right after commit is confirmed without asking if you would lik
 
 ### Switch to `@commitlint`
 
-OpenCommit allows you to choose the prompt module used to generate commit messages. By default, OpenCommit uses its conventional-commit message generator. However, you can switch to using the `@commitlint` prompt module if you prefer. This option lets you generate commit messages in respect with the local config.
+Git-Commit allows you to choose the prompt module used to generate commit messages. By default, Git-Commit uses its conventional-commit message generator. However, you can switch to using the `@commitlint` prompt module if you prefer. This option lets you generate commit messages in respect with the local config.
 
 You can set this option by running the following command:
 
@@ -243,7 +243,7 @@ oco config set OCO_PROMPT_MODULE=conventional-commit
 
 #### Integrating with `@commitlint`
 
-The integration between `@commitlint` and OpenCommit is done automatically the first time OpenCommit is run with `OCO_PROMPT_MODULE` set to `@commitlint`. However, if you need to force set or reset the configuration for `@commitlint`, you can run the following command:
+The integration between `@commitlint` and Git-Commit is done automatically the first time Git-Commit is run with `OCO_PROMPT_MODULE` set to `@commitlint`. However, if you need to force set or reset the configuration for `@commitlint`, you can run the following command:
 
 ```sh
 oco commitlint force
@@ -257,15 +257,15 @@ oco commitlint get
 
 This allows you to ensure that the configuration is set up as desired.
 
-Additionally, the integration creates a file named `.opencommit-commitlint` which contains the prompts used for the local `@commitlint` configuration. You can modify this file to fine-tune the example commit message generated by OpenAI. This gives you the flexibility to make adjustments based on your preferences or project guidelines.
+Additionally, the integration creates a file named `.git-commit-commitlint` which contains the prompts used for the local `@commitlint` configuration. You can modify this file to fine-tune the example commit message generated by OpenAI. This gives you the flexibility to make adjustments based on your preferences or project guidelines.
 
-OpenCommit generates a file named `.opencommit-commitlint` in your project directory which contains the prompts used for the local `@commitlint` configuration. You can modify this file to fine-tune the example commit message generated by OpenAI. If the local `@commitlint` configuration changes, this file will be updated the next time OpenCommit is run.
+Git-Commit generates a file named `.git-commit-commitlint` in your project directory which contains the prompts used for the local `@commitlint` configuration. You can modify this file to fine-tune the example commit message generated by OpenAI. If the local `@commitlint` configuration changes, this file will be updated the next time Git-Commit is run.
 
 This offers you greater control over the generated commit messages, allowing for customization that aligns with your project's conventions.
 
 ## Git flags
 
-The `opencommit` or `oco` commands can be used in place of the `git commit -m "${generatedMessage}"` command. This means that any regular flags that are used with the `git commit` command will also be applied when using `opencommit` or `oco`.
+The `git-commit` or `oco` commands can be used in place of the `git commit -m "${generatedMessage}"` command. This means that any regular flags that are used with the `git commit` command will also be applied when using `git-commit` or `oco`.
 
 ```sh
 oco --no-verify
@@ -283,13 +283,13 @@ To include a message in the generated message, you can utilize the template func
 oco '#205: $msg’
 ```
 
-> opencommit examines placeholders in the parameters, allowing you to append additional information before and after the placeholders, such as the relevant Issue or Pull Request. Similarly, you have the option to customize the OCO_MESSAGE_TEMPLATE_PLACEHOLDER configuration item, for example, simplifying it to $m!"
+> git-commit examines placeholders in the parameters, allowing you to append additional information before and after the placeholders, such as the relevant Issue or Pull Request. Similarly, you have the option to customize the OCO_MESSAGE_TEMPLATE_PLACEHOLDER configuration item, for example, simplifying it to $m!"
 
 ### Message Template Placeholder Config
 
 #### Overview
 
-The `OCO_MESSAGE_TEMPLATE_PLACEHOLDER` feature in the `opencommit` tool allows users to embed a custom message within the generated commit message using a template function. This configuration is designed to enhance the flexibility and customizability of commit messages, making it easier for users to include relevant information directly within their commits.
+The `OCO_MESSAGE_TEMPLATE_PLACEHOLDER` feature in the `git-commit` tool allows users to embed a custom message within the generated commit message using a template function. This configuration is designed to enhance the flexibility and customizability of commit messages, making it easier for users to include relevant information directly within their commits.
 
 #### Implementation Details
 
@@ -314,20 +314,20 @@ Once users have generated their desired commit message, they can proceed to comm
 
 ### Ignore files
 
-You can remove files from being sent to OpenAI by creating a `.opencommitignore` file. For example:
+You can remove files from being sent to OpenAI by creating a `.git-commitignore` file. For example:
 
 ```ignorelang
 path/to/large-asset.zip
 **/*.jpg
 ```
 
-This helps prevent opencommit from uploading artifacts and large files.
+This helps prevent git-commit from uploading artifacts and large files.
 
-By default, opencommit ignores files matching: `*-lock.*` and `*.lock`
+By default, git-commit ignores files matching: `*-lock.*` and `*.lock`
 
 ## Git hook (KILLER FEATURE)
 
-You can set OpenCommit as Git [`prepare-commit-msg`](https://git-scm.com/docs/githooks#_prepare_commit_msg) hook. Hook integrates with your IDE Source Control and allows you to edit the message before committing.
+You can set Git-Commit as Git [`prepare-commit-msg`](https://git-scm.com/docs/githooks#_prepare_commit_msg) hook. Hook integrates with your IDE Source Control and allows you to edit the message before committing.
 
 To set the hook:
 
@@ -348,18 +348,18 @@ git add <files...>
 git commit
 ```
 
-Or follow the process of your IDE Source Control feature, when it calls `git commit` command — OpenCommit will integrate into the flow.
+Or follow the process of your IDE Source Control feature, when it calls `git commit` command — Git-Commit will integrate into the flow.
 
-## Setup OpenCommit as a GitHub Action (BETA) 🔥
+## Setup Git-Commit as a GitHub Action (BETA) 🔥
 
-OpenCommit is now available as a GitHub Action which automatically improves all new commits messages when you push to remote!
+Git-Commit is now available as a GitHub Action which automatically improves all new commits messages when you push to remote!
 
 This is great if you want to make sure all commits in all of your repository branches are meaningful and not lame like `fix1` or `done2`.
 
-Create a file `.github/workflows/opencommit.yml` with the contents below:
+Create a file `.github/workflows/git-commit.yml` with the contents below:
 
 ```yml
-name: 'OpenCommit Action'
+name: 'Git-Commit Action'
 
 on:
   push:
@@ -368,9 +368,9 @@ on:
     branches-ignore: [main master dev development release]
 
 jobs:
-  opencommit:
+  git-commit:
     timeout-minutes: 10
-    name: OpenCommit
+    name: Git-Commit
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
@@ -381,7 +381,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: di-sukharev/opencommit@github-action-v1.0.4
+      - uses: synopkg/git-commit@github-action-v1.0.4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -404,7 +404,7 @@ jobs:
 
 That is it. Now when you push to any branch in your repo — all NEW commits are being improved by your never-tired AI.
 
-Make sure you exclude public collaboration branches (`main`, `dev`, `etc`) in `branches-ignore`, so OpenCommit does not rebase commits there while improving the messages.
+Make sure you exclude public collaboration branches (`main`, `dev`, `etc`) in `branches-ignore`, so Git-Commit does not rebase commits there while improving the messages.
 
 Interactive rebase (`rebase -i`) changes commits' SHA, so the commit history in remote becomes different from your local branch history. This is okay if you work on the branch alone, but may be inconvenient for other collaborators.
 
@@ -412,8 +412,8 @@ Interactive rebase (`rebase -i`) changes commits' SHA, so the commit history in 
 
 You pay for your requests to OpenAI API on your own.
 
-OpenCommit stores your key locally.
+Git-Commit stores your key locally.
 
-OpenCommit by default uses 3.5-turbo model, it should not exceed $0.10 per casual working day.
+Git-Commit by default uses 3.5-turbo model, it should not exceed $0.10 per casual working day.
 
 You may switch to gpt-4, it's better, but more expensive.

@@ -67,7 +67,7 @@ export class AzureEngine implements AiEngine {
 
         if (openAiError?.message) outro(openAiError.message);
         outro(
-          'For help look into README https://github.com/di-sukharev/opencommit#setup'
+          'For help look into README https://github.com/synopkg/git-commit#setup'
         );
       }
 

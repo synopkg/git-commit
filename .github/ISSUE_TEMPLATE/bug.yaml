@@ -10,9 +10,9 @@ body:
       value: |
         Thanks for taking the time to fill out this bug report!
   - type: input
-    id: opencommit-version
+    id: git-commit-version
     attributes:
-      label: Opencommit Version
+      label: Git-commit Version
       description: What version of our software are you running?
       placeholder: ex. 1.1.22
     validations:

@@ -10,7 +10,7 @@ import {
   OCO_AI_PROVIDER_ENUM
 } from '../commands/config';
 
-const migrationsFile = pathJoin(homedir(), '.opencommit_migrations');
+const migrationsFile = pathJoin(homedir(), '.git-commit_migrations');
 
 const getCompletedMigrations = (): string[] => {
   if (!fs.existsSync(migrationsFile)) {

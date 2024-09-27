@@ -16,7 +16,10 @@ export class OpenAiEngine implements AiEngine {
     if (!config.baseURL) {
       this.client = new OpenAI({ apiKey: config.apiKey });
     } else {
-      this.client = new OpenAI({ apiKey: config.apiKey, baseURL: config.baseURL });
+      this.client = new OpenAI({
+        apiKey: config.apiKey,
+        baseURL: config.baseURL
+      });
     }
   }
 

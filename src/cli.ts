@@ -16,7 +16,7 @@ const extraArgs = process.argv.slice(2);
 cli(
   {
     version: packageJSON.version,
-    name: 'opencommit',
+    name: 'git-commit',
     commands: [configCommand, hookCommand, commitlintConfigCommand],
     flags: {
       fgm: Boolean,

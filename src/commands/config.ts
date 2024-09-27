@@ -117,9 +117,7 @@ const validateConfig = (
   if (!condition) {
     outro(`${chalk.red('✖')} wrong value for ${key}: ${validationMessage}.`);
 
-    outro(
-      'For more help refer to docs https://github.com/di-sukharev/opencommit'
-    );
+    outro('For more help refer to docs https://github.com/synopkg/git-commit');
 
     process.exit(1);
   }
@@ -328,7 +326,7 @@ export type ConfigType = {
   [CONFIG_KEYS.OCO_TEST_MOCK_TYPE]: string;
 };
 
-export const defaultConfigPath = pathJoin(homedir(), '.opencommit');
+export const defaultConfigPath = pathJoin(homedir(), '.git-commit');
 export const defaultEnvPath = pathResolve(process.cwd(), '.env');
 
 const assertConfigsAreValid = (config: Record<string, any>) => {
@@ -346,7 +344,7 @@ const assertConfigsAreValid = (config: Record<string, any>) => {
     } catch (error) {
       outro(`Unknown '${key}' config option or missing validator.`);
       outro(
-        `Manually fix the '.env' file or global '~/.opencommit' config file.`
+        `Manually fix the '.env' file or global '~/.git-commit' config file.`
       );
 
       process.exit(1);
@@ -443,9 +441,9 @@ export const getGlobalConfig = (configPath: string = defaultConfigPath) => {
 
 /**
  * Merges two configs.
- * Env config takes precedence over global ~/.opencommit config file
+ * Env config takes precedence over global ~/.git-commit config file
  * @param main - env config
- * @param fallback - global ~/.opencommit config file
+ * @param fallback - global ~/.git-commit config file
  * @returns merged config
  */
 const mergeConfigs = (main: Partial<ConfigType>, fallback: ConfigType) => {
@@ -509,7 +507,7 @@ export const setConfig = (
     if (!configValidators.hasOwnProperty(key)) {
       const supportedKeys = Object.keys(configValidators).join('\n');
       throw new Error(
-        `Unsupported config key: ${key}. Expected keys are:\n\n${supportedKeys}.\n\nFor more help refer to our docs: https://github.com/di-sukharev/opencommit`
+        `Unsupported config key: ${key}. Expected keys are:\n\n${supportedKeys}.\n\nFor more help refer to our docs: https://github.com/synopkg/git-commit`
       );
     }
 
